@@ -1,6 +1,9 @@
+  library(shiny)
   library(quantmod)
   library(PerformanceAnalytics)
+  library(htmltab)
   library(DataCache)
+
   
   get_timeseries = function(stock_id) {
     

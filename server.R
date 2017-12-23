@@ -1,3 +1,10 @@
+  library(shiny)
+  library(quantmod)
+  library(PerformanceAnalytics)
+  library(htmltab)
+  library(DataCache)
+
+  
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output) {
   
@@ -6,11 +13,11 @@ shinyServer(function(input, output) {
     
       # get DAX data
       varName1 = '^GDAXI'
-      cache.stockdata = data.cache(function() datafeed_timeseries(varName1) , cache.name = varName1, frequency = daily, wait = FALSE)
+      cache.stockdata = data.cache(function() datafeed_timeseries(varName1) , cache.dir = "./cache", cache.name = varName1, frequency = daily, wait = FALSE)
       
       # get stock data
       varName2 = input$stock_id
-      cache.stockdata = data.cache(function() datafeed_timeseries(varName2) , cache.name = varName2, frequency = daily, wait = FALSE)
+      cache.stockdata = data.cache(function() datafeed_timeseries(varName2) , cache.dir = "./cache" , cache.name = varName2, frequency = daily, wait = FALSE)
       
       # get from environment
       stockdata.thisstock = get(paste0('stockdata.', input$stock_id))

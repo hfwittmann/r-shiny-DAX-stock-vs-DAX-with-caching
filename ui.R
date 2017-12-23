@@ -1,18 +1,22 @@
-library(shiny)
 
-# setting the working directory can be helpful for debugging 
-# setwd('~/Sync/R/shiny/shinyapp/15_stock_analysis/')
-silent <- lapply(list.files('./subs', pattern = '.(R|r)$', full.names = TRUE), source) # source all R-files in subs folder
+  library(shiny)
+  library(quantmod)
+  library(PerformanceAnalytics)
+  library(htmltab)
+  library(DataCache)
 
-## Initialization
+  source('./subs/getDAX_components.R')
+  source('./subs/getTimeseries.R')
   
-  {## get dax components names
-      
-    # saved under DAX.components.Symbol
-    cache.components = data.cache(function() datafeed_components() , cache.name = 'components', frequency = weekly, wait = FALSE)
+  ## Initialization
     
-  } # {## get dax components names
-# end: ## Initialization
+    {## get dax components names
+        
+      # saved under DAX.components.Symbol
+      cache.components = data.cache(function() datafeed_components() , cache.dir = "./cache", cache.name = 'components', frequency = weekly, wait = FALSE)
+      
+    } # {## get dax components names
+  # end: ## Initialization
 
 # Define UI for dataset viewer application
 shinyUI(pageWithSidebar(

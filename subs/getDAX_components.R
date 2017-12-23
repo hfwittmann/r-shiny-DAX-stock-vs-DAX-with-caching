@@ -2,6 +2,7 @@
   library(quantmod)
   library(PerformanceAnalytics)
   library(htmltab)
+  library(DataCache)
 
   get_components = function()
   
