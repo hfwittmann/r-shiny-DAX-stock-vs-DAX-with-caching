@@ -22,7 +22,7 @@
 shinyUI(pageWithSidebar(
   
   # Application title.
-  headerPanel("DAX stock vs DAX"),
+  headerPanel("DAX stock vs DAX (docker)"),
   
   # Sidebar with controls to select a dataset and specify the number
   # of observations to view. The helpText function is also used to 
@@ -43,7 +43,7 @@ shinyUI(pageWithSidebar(
     sliderInput("range", "Range:",
                 min = 0, max = 100, value = c(0,100)),
 
-    helpText("Load Stockdata from Yahoo")
+    helpText("(Stockdata from Yahoo)")
     
     # submitButton("Update View")
   ),
